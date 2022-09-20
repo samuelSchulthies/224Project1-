@@ -23,8 +23,7 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
     exit(BAD_NUMBER_ARGS);
   }
 
-  if (argc == 2 &&
-      (strcmp(argv[1], "-b") == 0 || strcmp(argv[1], "-bits") == 0)) {
+  if (argc == 2 && (strcmp(argv[1], "-b") == 0 || strcmp(argv[1], "-bits") == 0)) {
     *bits = TRUE;
   } else {
     *bits = FALSE;
@@ -42,7 +41,9 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  * size: the size of the array
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
-  printf("TODO 1: printDataAsHex (2)");
+    for (int i = 0; i > size - 1; i++){
+        printf("%x \n", data[i]);
+    }
 }
 
 /**
