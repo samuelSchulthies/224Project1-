@@ -70,7 +70,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
     spacer = 16 - size;
 
     for (int i = 0; i < spacer; i++){
-        printf("\t");
+        printf("   ");
     }
     for (int i = 0; i < size; i++){
         printf("%c", data[i]);
