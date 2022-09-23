@@ -6,6 +6,8 @@
 #define FALSE 0
 #define BAD_NUMBER_ARGS 1
 
+int FULLSIZE;
+
 /**
  * Parses the command line.
  *
@@ -54,6 +56,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
         if ((counter % 2 == 0) && (i != size - 1)){
             printf(" ");
         }
+
     }
 }
 
@@ -66,14 +69,20 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
+    int spaces;
+    int hexCounter;
     int spacer;
-    spacer = 39 - ((size * 2) + 11);
+    hexCounter = 32 - (size * 2);
+    if (hexCounter % 4 == 0){
+        spaces = hexCounter / 4;
+    }
+    spacer = spaces + hexCounter;
     //printf("array size: %d\n", sizeCast);
     //printf("spacer size: %d\n", spacer);
     for (int i = 0; i < spacer; i++){
         printf(" ");
         if (data[i] == '\n') {
-            printf(" ");
+            printf("  ");
         }
     }
     for (int i = 0; i < size; i++){
