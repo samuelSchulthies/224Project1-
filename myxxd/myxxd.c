@@ -69,11 +69,11 @@ void printDataAsChars(unsigned char *data, size_t size) {
     int spacer;
     int sizeCast = (int) size;
     spacer = 16 - sizeCast;
-    printf("array size: %d\n", sizeCast);
-    printf("spacer size: %d\n", spacer);
+    //printf("array size: %d\n", sizeCast);
+    //printf("spacer size: %d\n", spacer);
 
     for (int i = 0; i < spacer; i++){
-        printf(" ");
+        printf("  ");
     }
     for (int i = 0; i < sizeCast; i++){
         printf("%c", data[i]);
