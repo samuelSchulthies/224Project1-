@@ -41,8 +41,8 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  * size: the size of the array
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
-    printf("In hex function");
-    for (int i = 0; i > size; i++){
+    //printf("In hex function");
+    for (int i = 0; i < size; i++){
         printf("%x ", data[i]);
     }
 }
