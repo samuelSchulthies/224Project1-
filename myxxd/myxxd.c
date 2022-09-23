@@ -66,7 +66,12 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-    printf("\t \t \t");
+    int spacer;
+    spacer = 16 - size;
+
+    for (int i = 0; i < spacer; i++){
+        printf(" ");
+    }
     for (int i = 0; i < size; i++){
         printf("%c", data[i]);
     }
