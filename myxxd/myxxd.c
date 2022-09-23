@@ -45,16 +45,16 @@ void printDataAsHex(unsigned char *data, size_t size) {
 
     printf(" ");
     for (int i = 0; i < size; i++){
-//        if (i == size - 1){
-//            printf("0");
-//        }
+        if (data[i] == '\n'){
+            printf("0a");
+            break;
+        }
         printf("%x", data[i]);
         counter++;
         if (counter % 2 == 0){
             printf(" ");
         }
     }
-    //printf("0a");
 }
 
 /**
