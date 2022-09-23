@@ -74,9 +74,11 @@ void printDataAsChars(unsigned char *data, size_t size) {
     int hexCounter;
     int spacer;
     hexCounter = 32 - (size * 2);
-
     spacer = BYTESPACES + hexCounter;
     for (int i = 0; i < spacer; i++){
+        if (hexCounter == 0){
+            break;
+        }
         printf(" ");
         if (data[i] == '\n') {
             printf("  ");
