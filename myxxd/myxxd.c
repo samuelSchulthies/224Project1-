@@ -42,6 +42,7 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
     //printf("In hex function");
+    printf("\t");
     for (int i = 0; i < size; i++){
         printf("%x ", data[i]);
     }
