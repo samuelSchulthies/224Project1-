@@ -67,7 +67,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
     int spacer;
-    spacer = 25 - size;
+    spacer = 14 - size;
 
     for (int i = 0; i < spacer; i++){
         printf(" ");
