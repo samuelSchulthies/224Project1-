@@ -44,7 +44,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
     int counter = 0;
 
     printf(" ");
-    for (int i = 0; i < size - 1; i++){
+    for (int i = 0; i < size; i++){
 //        if (i == size - 1){
 //            printf("0");
 //        }
@@ -54,7 +54,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
             printf(" ");
         }
     }
-    printf("0a");
+    //printf("0a");
 }
 
 /**
