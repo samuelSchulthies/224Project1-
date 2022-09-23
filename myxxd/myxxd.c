@@ -67,13 +67,13 @@ void printDataAsHex(unsigned char *data, size_t size) {
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
     int spacer;
-    spacer = 39 - size * 2;
+    spacer = 39 - ((size * 2) + 7);
     //printf("array size: %d\n", sizeCast);
     //printf("spacer size: %d\n", spacer);
     for (int i = 0; i < spacer; i++){
         printf(" ");
         if (data[i] == '\n') {
-            printf("  ");
+            printf(" ");
         }
     }
     for (int i = 0; i < size; i++){
