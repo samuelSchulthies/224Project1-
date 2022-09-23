@@ -73,9 +73,9 @@ void printDataAsChars(unsigned char *data, size_t size) {
     //printf("spacer size: %d\n", spacer);
 
     for (int i = 0; i < spacer; i++){
-        printf("  ");
+        printf(" ");
         if (data[i] == '\n') {
-            printf("     ");
+            printf("  ");
         }
     }
     for (int i = 0; i < sizeCast; i++){
