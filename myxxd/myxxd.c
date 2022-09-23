@@ -66,7 +66,10 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-  printf("TODO 2: printDataAsChars (3)");
+    printf("\t");
+    for (int i = 0; i < size; i++){
+        printf("%c", data[i]);
+    }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
