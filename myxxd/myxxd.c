@@ -79,7 +79,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
             printf("  ");
         }
     }
-    for (int i = 0; i < sizeCast; i++){
+    for (int i = 0; i < size; i++){
         printf("%c", data[i]);
     }
 }
