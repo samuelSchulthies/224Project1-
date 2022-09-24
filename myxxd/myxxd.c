@@ -83,17 +83,17 @@ void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
     printf(" ");
-    for (int ROW = 0; ROW < size; ROW++){
-        int caster = (int) data[ROW];
-        for (int COL = 0; COL < 8; COL++){
-            if (caster%2 == 1) {
+    for (int BYTE = 0; BYTE < size; BYTE++){
+        int caster = (int) data[BYTE];
+        for (int BIT = 7; BIT >= 0; BIT--){
+            if (caster % 2 == 1) {
                 printf("1");
             }
             else {
                 printf("0");
             }
             counter++;
-            if ((counter % 8 == 0) && (ROW < size - 1)) {
+            if ((counter % 8 == 0) && (BYTE < size - 1)) {
                 printf(" ");
                 BYTESPACES++;
             }
