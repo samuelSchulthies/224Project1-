@@ -130,7 +130,7 @@ void readAndPrintInputAsHex(FILE *input) {
  * input: input stream
  **/
 void readAndPrintInputAsBits(FILE *input) {
-    unsigned char data[16];
+    unsigned char data[6];
     int numBytesRead = fread(data, 1, 16, input);
     unsigned int offset = 0;
     while (numBytesRead != 0) {
