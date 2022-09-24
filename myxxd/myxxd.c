@@ -49,8 +49,8 @@ void printDataAsHex(unsigned char *data, size_t size) {
     for (int i = 0; i < size; i++){
         printf("%02x", data[i]);
         counter++;
-        if ((counter % 2 == 0) && (i != size - 1)){
-            //printf(" ");
+        if ((counter % 2 == 0) && (i != (size - 1)){
+            printf(" ");
             BYTESPACES++;
         }
 
