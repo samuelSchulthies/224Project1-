@@ -82,32 +82,28 @@ void printDataAsChars(unsigned char *data, size_t size) {
 void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
-    int binaryStorage [8];
+    int binaryStorage [size][8];
     printf(" ");
 
-    //converts the data to binary and stores it
-    for (int BYTE = 0; BYTE < size; BYTE++){
-        int caster = (int) data[BYTE];
-        for (int BIT = 0; BIT < 8; BIT++){
+    for (int ROW = 0; ROW < size; ROW++){
+        int caster = (int) data[ROW];
+        for (int COL = 0; COL < 8; COL++){
             if (caster % 2 == 1) {
-                binaryStorage [BIT] = 1;
+                binaryStorage [ROW][COL] = 1;
             }
             else {
-                binaryStorage [BIT] = 0;
+                binaryStorage [ROW][COL] = 0;
             }
             caster = caster / 2;
         }
-    }
 
-    //prints out the binary data backwards per little endian
-    for (int BYTE = 0; BYTE < size; BYTE++) {
-        for (int BIT = 0; BIT >= 0; BIT--) {
-            printf("%d", binaryStorage[BIT]);
-            counter++;
-            }
-        printf(" ");
-        BYTESPACES++;
+    }
+    
+    for (int ROW = 0; ROW < 5; ROW++){
+        for(int COL = 7; COL >= 0; COL--){
+            printf("%d", binaryStorage[ROW][COL]);
         }
+        printf(" ");
     }
 }
 
