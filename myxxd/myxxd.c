@@ -108,7 +108,9 @@ void printDataAsBits(unsigned char *data, size_t size){
         for(int COL = 7; COL >= 0; COL--){
             printf("%d", binaryStorage[ROW][COL]);
         }
-        printf(" ");
+        if (ROW < size) {
+            printf(" ");
+        }
         byteSpaces++;
     }
 
@@ -117,7 +119,7 @@ void printDataAsBits(unsigned char *data, size_t size){
         if (size == 6) {
             break;
         }
-        printf(".");
+        printf(" ");
     }
 }
 
