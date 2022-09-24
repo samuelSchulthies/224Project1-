@@ -100,7 +100,7 @@ void printDataAsBits(unsigned char *data, size_t size){
     }
 
     //prints out the binary data backwards per little endian
-    for (int BYTE = 0; BYTE < size; BYTE++){
+    for (int BYTE = 0; BYTE < size; BYTE++) {
         for (int BIT = 7; BIT > 0; BIT--) {
             printf("%d", binaryStorage[BIT]);
             counter++;
@@ -109,6 +109,7 @@ void printDataAsBits(unsigned char *data, size_t size){
                 BYTESPACES++;
             }
         }
+    }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
