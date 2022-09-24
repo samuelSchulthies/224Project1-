@@ -106,7 +106,7 @@ void printDataAsBits(unsigned char *data, size_t size){
             counter++;
             }
         printf(" ");
-        BYTESPACES++
+        BYTESPACES++;
         }
     }
 }
