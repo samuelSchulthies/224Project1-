@@ -7,8 +7,6 @@
 #define FALSE 0
 #define BAD_NUMBER_ARGS 1
 
-int BYTESPACES;
-
 /**
  * Parses the command line.
  *
@@ -45,7 +43,9 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
     int counter = 0;
-    BYTESPACES = 0;
+    int byteSpaces = 0;
+    int spacer;
+
     printf(" ");
     for (int i = 0; i < size; i++) {
         printf("%02x", data[i]);
@@ -54,7 +54,14 @@ void printDataAsHex(unsigned char *data, size_t size) {
             printf(" ");
             BYTESPACES++;
         }
+    }
 
+    spacer = 39 - (size * 2) - byteSpaces;
+    for (int i = 0; i < spacer; i++) {
+        if (size == 16) {
+            break;
+        }
+        printf(" ");
     }
 }
 
@@ -67,16 +74,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-    int spacer = 39 - (size * 2) - BYTESPACES;
-
-    for (int i = 0; i < spacer; i++) {
-        if (size == 16) {
-            break;
-        }
-        printf(" ");
-    }
     for (int i = 0; i < size; i++) {
-        int caster = (int) data[i];
         if(isprint(data[i]) == 0){
             printf(".");
         }
