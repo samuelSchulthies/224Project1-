@@ -117,7 +117,7 @@ void printDataAsBits(unsigned char *data, size_t size){
         if (size == 6) {
             break;
         }
-        printf(" ");
+        printf(".");
     }
 }
 
