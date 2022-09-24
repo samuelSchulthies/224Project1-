@@ -66,12 +66,10 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-    int hexCounter;
-    int spacer;
-    hexCounter = 32 - (size * 2);
-    spacer = BYTESPACES + hexCounter;
+    int spacer = 39 - (size * 2) - BYTESPACES;
+
     for (int i = 0; i < spacer; i++){
-        if (hexCounter == 0){
+        if (size == 16){
             break;
         }
         printf(" ");
