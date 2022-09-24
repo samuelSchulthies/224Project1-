@@ -72,7 +72,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
         if (size == 16){
             break;
         }
-        printf(" ");
+        printf(".");
         if (data[i] == '\n') {
             //printf("  ");
         }
