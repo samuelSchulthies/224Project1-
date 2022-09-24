@@ -75,7 +75,11 @@ void printDataAsChars(unsigned char *data, size_t size) {
         printf(" ");
     }
     for (int i = 0; i < size; i++) {
+        int caster = (int) data[i];
         printf("%c", data[i]);
+        if (caster > 127){
+            printf(".");
+        }
     }
 }
 
