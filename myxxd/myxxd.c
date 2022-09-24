@@ -131,7 +131,7 @@ void readAndPrintInputAsHex(FILE *input) {
  **/
 void readAndPrintInputAsBits(FILE *input) {
     unsigned char data[6];
-    int numBytesRead = fread(data, 1, 16, input);
+    int numBytesRead = fread(data, 1, 6, input);
     unsigned int offset = 0;
     while (numBytesRead != 0) {
         printf("%08x:", offset);
@@ -140,7 +140,7 @@ void readAndPrintInputAsBits(FILE *input) {
         printf("  ");
         printDataAsChars(data, numBytesRead);
         printf("\n");
-        numBytesRead = fread(data, 1, 16, input);
+        numBytesRead = fread(data, 1, 6, input);
     }
 }
 
