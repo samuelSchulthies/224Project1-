@@ -45,12 +45,12 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
 void printDataAsHex(unsigned char *data, size_t size) {
     int counter = 0;
 
-    printf("@@");
+    printf("  ");
     for (int i = 0; i < size; i++){
         printf("%02x", data[i]);
         counter++;
         if ((counter % 2 == 0) && (i < size - 1)){
-            printf("@");
+            printf(" ");
             BYTESPACES++;
         }
 
