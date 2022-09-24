@@ -91,7 +91,7 @@ void printDataAsBits(unsigned char *data, size_t size){
             else {
                 printf("0");
             }
-            counter++
+            counter++;
             if ((counter % 8 == 0) && (COL < size - 1)) {
                 printf(" ");
                 BYTESPACES++;
