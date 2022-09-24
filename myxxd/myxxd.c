@@ -86,7 +86,7 @@ void printDataAsBits(unsigned char *data, size_t size){
     printf(" ");
 
     //converts the data to binary and stores it
-    for (int BYTE = 0; BYTE < 5; BYTE++){
+    for (int BYTE = 0; BYTE < size; BYTE++){
         int caster = (int) data[BYTE];
         for (int BIT = 0; BIT < 8; BIT++){
             if (caster % 2 == 1) {
