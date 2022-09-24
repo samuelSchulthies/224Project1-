@@ -151,7 +151,7 @@ void readAndPrintInputAsBits(FILE *input) {
         printf("%08x:", offset);
         offset += numBytesRead;
         printDataAsBits(data, numBytesRead);
-        printf("  ");
+        printf("");
         printDataAsChars(data, numBytesRead);
         printf("\n");
         numBytesRead = fread(data, 1, 6, input);
