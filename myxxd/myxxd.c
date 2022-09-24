@@ -83,9 +83,10 @@ void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
     printf("  ");
+    for (int ROW = 0; ROW < size; ROW++){
+        int caster = (int) data[ROW];
         for (int COL = 0; COL < 8; COL++){
-            int caster = (int) data[COL];
-
+            
             if (caster%2 == 1) {
                 printf("1");
             }
@@ -99,6 +100,8 @@ void printDataAsBits(unsigned char *data, size_t size){
             }
             caster = caster / 2;
         }
+
+    }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
