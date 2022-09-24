@@ -91,6 +91,10 @@ void printDataAsBits(unsigned char *data, size_t size){
             else {
                 printf("0");
             }
+            if ((counter % 8 == 0) && (i < size - 1)) {
+                printf(" ");
+                BYTESPACES++;
+            }
             data[ROW] = data[ROW] / 2;
         }
 
