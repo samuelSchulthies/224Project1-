@@ -80,7 +80,6 @@ void printDataAsChars(unsigned char *data, size_t size) {
 }
 
 void printDataAsBits(unsigned char *data, size_t size){
-    int counter = 0;
     BYTESPACES = 0;
     int binaryStorage [size][8];
     printf(" ");
@@ -98,12 +97,13 @@ void printDataAsBits(unsigned char *data, size_t size){
         }
 
     }
-    
+
     for (int ROW = 0; ROW < 5; ROW++){
         for(int COL = 7; COL >= 0; COL--){
             printf("%d", binaryStorage[ROW][COL]);
         }
         printf(" ");
+        BYTESPACES++;
     }
 }
 
