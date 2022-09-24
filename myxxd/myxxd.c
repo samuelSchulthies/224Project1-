@@ -112,7 +112,7 @@ void printDataAsBits(unsigned char *data, size_t size){
         byteSpaces++;
     }
 
-    spacer = 53 - (size * 8) - byteSpaces;
+    spacer = 55 - (size * 8) - byteSpaces;
     for (int i = 0; i < spacer; i++) {
         if (size == 16) {
             break;
@@ -151,7 +151,7 @@ void readAndPrintInputAsBits(FILE *input) {
         printf("%08x:", offset);
         offset += numBytesRead;
         printDataAsBits(data, numBytesRead);
-        printf("**");
+        printf("  ");
         printDataAsChars(data, numBytesRead);
         printf("\n");
         numBytesRead = fread(data, 1, 6, input);
