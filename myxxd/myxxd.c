@@ -112,7 +112,7 @@ void printDataAsBits(unsigned char *data, size_t size){
         byteSpaces++;
     }
 
-    spacer = 55 - (size * 2) - byteSpaces;
+    spacer = 55 - size - byteSpaces;
     for (int i = 0; i < spacer; i++) {
         if (size == 16) {
             break;
