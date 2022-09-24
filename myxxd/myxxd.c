@@ -101,13 +101,12 @@ void printDataAsBits(unsigned char *data, size_t size){
 
     //prints out the binary data backwards per little endian
     for (int BYTE = 0; BYTE < size; BYTE++) {
-        for (int BIT = 8; BIT > 0; BIT--) {
+        for (int BIT = 0; BIT >= 0; BIT--) {
             printf("%d", binaryStorage[BIT]);
             counter++;
-            if ((counter % 8 == 0) && (BYTE < size - 1)) {
-                printf(" ");
-                BYTESPACES++;
             }
+        printf(" ");
+        BYTESPACES++
         }
     }
 }
