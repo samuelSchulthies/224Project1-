@@ -87,6 +87,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
 void printDataAsBits(unsigned char *data, size_t size){
     int byteSpaces = 0;
     int binaryStorage [size][8];
+    int spacer;
     printf(" ");
 
     for (int ROW = 0; ROW < size; ROW++){
