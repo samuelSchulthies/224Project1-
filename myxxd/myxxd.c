@@ -98,7 +98,7 @@ void printDataAsBits(unsigned char *data, size_t size){
 
     }
 
-    for (int ROW = 0; ROW < 5; ROW++){
+    for (int ROW = 0; ROW < size; ROW++){
         for(int COL = 7; COL >= 0; COL--){
             printf("%d", binaryStorage[ROW][COL]);
         }
