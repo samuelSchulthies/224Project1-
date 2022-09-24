@@ -52,7 +52,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
         counter++;
         if ((counter % 2 == 0) && (i < size - 1)) {
             printf(" ");
-            BYTESPACES++;
+            byteSpaces++;
         }
     }
 
@@ -85,7 +85,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
 }
 
 void printDataAsBits(unsigned char *data, size_t size){
-    BYTESPACES = 0;
+    int byteSpaces = 0;
     int binaryStorage [size][8];
     printf(" ");
 
@@ -108,7 +108,7 @@ void printDataAsBits(unsigned char *data, size_t size){
             printf("%d", binaryStorage[ROW][COL]);
         }
         printf(" ");
-        BYTESPACES++;
+        byteSpaces++;
     }
 }
 
