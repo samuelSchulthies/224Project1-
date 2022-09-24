@@ -75,10 +75,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
         if (size == 16){
             break;
         }
-        printf(".");
-        if (data[i] == '\n') {
-            //printf("  ");
-        }
+        printf(" ");
     }
     for (int i = 0; i < size; i++){
         printf("%c", data[i]);
@@ -93,7 +90,7 @@ void readAndPrintInputAsHex(FILE *input) {
     printf("%08x:", offset);
     offset += numBytesRead;
     printDataAsHex(data, numBytesRead);
-    printf("**");
+    printf("  ");
     printDataAsChars(data, numBytesRead);
     printf("\n");
     numBytesRead = fread(data, 1, 16, input);
