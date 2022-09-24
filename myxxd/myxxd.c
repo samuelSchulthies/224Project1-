@@ -66,7 +66,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-    printf("size: %d\n", size);
+    printf("size: %lx\n", size);
     int spacer = 39 - (size * 2) - BYTESPACES;
 
     for (int i = 0; i < spacer; i++){
