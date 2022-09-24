@@ -110,6 +110,14 @@ void printDataAsBits(unsigned char *data, size_t size){
         printf(" ");
         byteSpaces++;
     }
+
+    spacer = 39 - (size * 2) - byteSpaces;
+    for (int i = 0; i < spacer; i++) {
+        if (size == 16) {
+            break;
+        }
+        printf(" ");
+    }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
@@ -142,7 +150,7 @@ void readAndPrintInputAsBits(FILE *input) {
         printf("%08x:", offset);
         offset += numBytesRead;
         printDataAsBits(data, numBytesRead);
-        printf("  ");
+        printf("**");
         printDataAsChars(data, numBytesRead);
         printf("\n");
         numBytesRead = fread(data, 1, 6, input);
