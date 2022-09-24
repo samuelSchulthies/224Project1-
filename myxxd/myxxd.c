@@ -83,7 +83,7 @@ void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
     printf("  ");
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < 8; i++) {
         if (data[i] % 2 == 1){
             printf("1");
         }
