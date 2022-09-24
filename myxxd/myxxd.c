@@ -6,7 +6,7 @@
 #define FALSE 0
 #define BAD_NUMBER_ARGS 1
 
-int BYTESPACES;
+int BYTESPACES = 0;
 
 /**
  * Parses the command line.
@@ -44,7 +44,6 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
     int counter = 0;
-    BYTESPACES = 0;
 
     printf(" ");
     for (int i = 0; i < size; i++){
