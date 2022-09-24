@@ -85,7 +85,9 @@ void printDataAsBits(unsigned char *data, size_t size){
     printf("  ");
     for (int ROW = 0; ROW < size; ROW++){
         for (int COL = 0; COL < 8; COL++){
-            if (data[ROW]%2 == 1) {
+            int caster = (int) data[ROW];
+            
+            if (caster%2 == 1) {
                 printf("1");
             }
             else {
@@ -96,7 +98,7 @@ void printDataAsBits(unsigned char *data, size_t size){
                 printf(" ");
                 BYTESPACES++;
             }
-            data[ROW] = data[ROW] / 2;
+            caster = caster / 2;
         }
 
     }
