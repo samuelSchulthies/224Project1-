@@ -82,24 +82,33 @@ void printDataAsChars(unsigned char *data, size_t size) {
 void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
+    int binaryStorage [8];
     printf(" ");
-    for (int BYTE = 0; BYTE < size; BYTE++){
+
+    //converts the data to binary and stores it
+    for (int BYTE = 0; BYTE < 5; BYTE++){
         int caster = (int) data[BYTE];
-        for (int BIT = 7; BIT >= 0; BIT--){
+        for (int BIT = 0; BIT < 8; BIT++){
             if (caster % 2 == 1) {
-                printf("1");
+                binaryStorage [BIT] = 1;
             }
             else {
-                printf("0");
+                binaryStorage [BIT] = 0;
             }
+            caster = caster / 2;
+        }
+    }
+
+    //prints out the binary data backwards per little endian
+    for (int BYTE = 0; BYTE < size; BYTE++){
+        for (int BIT = 7; BIT > 0; BIT--) {
+            printf("%d", binaryStorage[BIT]);
             counter++;
             if ((counter % 8 == 0) && (BYTE < size - 1)) {
                 printf(" ");
                 BYTESPACES++;
             }
-            caster = caster / 2;
         }
-    }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
