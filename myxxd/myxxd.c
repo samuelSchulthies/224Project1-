@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -76,8 +77,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
     }
     for (int i = 0; i < size; i++) {
         int caster = (int) data[i];
-        //printf(" CASTER: %d ", caster);
-        if ((caster > 127) || (caster == 10)){
+        if(isprint(data[i]) == 0){
             printf(".");
         }
         else {
