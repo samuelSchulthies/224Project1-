@@ -45,7 +45,7 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
 void printDataAsHex(unsigned char *data, size_t size) {
     int counter = 0;
     BYTESPACES = 0;
-    printf("  ");
+    printf(" ");
     for (int i = 0; i < size; i++) {
         printf("%02x", data[i]);
         counter++;
@@ -82,7 +82,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
 void printDataAsBits(unsigned char *data, size_t size){
     int counter = 0;
     BYTESPACES = 0;
-    printf("  ");
+    printf(" ");
     for (int ROW = 0; ROW < size; ROW++){
         int caster = (int) data[ROW];
         for (int COL = 0; COL < 8; COL++){
@@ -93,7 +93,7 @@ void printDataAsBits(unsigned char *data, size_t size){
                 printf("0");
             }
             counter++;
-            if ((counter % 8 == 0) && (COL < size - 1)) {
+            if ((counter % 8 == 0) && (ROW < size - 1)) {
                 printf(" ");
                 BYTESPACES++;
             }
