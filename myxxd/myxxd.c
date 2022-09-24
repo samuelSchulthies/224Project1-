@@ -76,7 +76,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
     }
     for (int i = 0; i < size; i++) {
         int caster = (int) data[i];
-        printf(" CASTER: %d ", caster);
+        //printf(" CASTER: %d ", caster);
         if ((caster > 127) || (caster == 10)){
             printf(".");
         }
