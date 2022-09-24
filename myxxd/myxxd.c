@@ -74,7 +74,7 @@ void printDataAsChars(unsigned char *data, size_t size) {
         }
         printf(" ");
         if (data[i] == '\n') {
-            printf("  ");
+            //printf("  ");
         }
     }
     for (int i = 0; i < size; i++){
