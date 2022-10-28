@@ -3,9 +3,9 @@
 void setValueTo200(int *a){
     *a = 200;
 }
-r
+
 void add24AndPrint(int a){
-    *a += 24;
+    *(&a) += 24;
     printf("The value of a is: %d\n", a);
 }
 
