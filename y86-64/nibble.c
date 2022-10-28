@@ -6,7 +6,7 @@ int main()
     unsigned char c = 0xab;
 
     //Extract the first nibble (least significant, or b)
-    unsigned char firstNibble = c; //CHANGE THIS LINE
+    unsigned char firstNibble = (c & 0x0f); //CHANGE THIS LINE
 
     //Extract the second nibble (most significant, or a)
     unsigned char secondNibble = 0; //CHANGE THIS LINE
