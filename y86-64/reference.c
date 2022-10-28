@@ -8,7 +8,7 @@ void setValueTo200(int *a){
 
 void add24AndPrint(int a){
     //WRITE CODE TO ADD 24 TO a AND THEN PRINT OUT
-    *(&a) += 24;
+    a += 24;
     printf("The value of a is: %d\n", a);
 }
 
