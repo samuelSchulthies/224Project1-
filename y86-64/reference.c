@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 void setValueTo200(int *a){
-    //WRITE CODE TO SET THE VALUE OF a TO 200
-    //THIS SHOULD CHANGE THE VARIABLE IN MAIN
+    *a = 200;
 }
 
 void add24AndPrint(int a){
