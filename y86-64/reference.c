@@ -24,7 +24,7 @@ int main()
     add24AndPrint(a);
 
     //What is the value of a here?
-    printf("The value of a in main is: %d", a);
+    printf("The value of a in main is: %d\n", a);
 
     return 0;
 }
