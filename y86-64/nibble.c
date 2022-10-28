@@ -9,7 +9,7 @@ int main()
     unsigned char firstNibble = (c & 0x0f); //CHANGE THIS LINE
 
     //Extract the second nibble (most significant, or a)
-    unsigned char secondNibble = 0; //CHANGE THIS LINE
+    unsigned char secondNibble = (c & 0xf0); //CHANGE THIS LINE
 
     //Print out each in hex to ensure correctness
     printf("First nibble : %x\n", firstNibble);
