@@ -10,7 +10,7 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
         printf("In NOP/HALT fetch");
         *valP = getPC() + 1;
     }
-    if (())
+    //if (())
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
