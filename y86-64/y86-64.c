@@ -6,7 +6,11 @@
 const int MAX_MEM_SIZE  = (1 << 13);
 
 void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordType *valP) {
- 
+    if ((icode == NOP) || (icode == HALT)){
+        printf("In NOP/HALT fetch");
+        *valP = getPC() + 1;
+    }
+    if (())
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
@@ -26,7 +30,13 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
 }
 
 void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType valM) {
-  
+    if ((icode ==  NOP) || (icode == HALT)){    //NOP and HALT
+        printf("In NOP/HALT PC");
+        setPC(valP);
+        if (icode == 1){
+            setStatus(STAT_HLT);
+        }
+    }
 }
 
 void stepMachine(int stepMode) {
