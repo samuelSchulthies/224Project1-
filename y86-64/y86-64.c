@@ -6,11 +6,10 @@
 const int MAX_MEM_SIZE  = (1 << 13);
 
 void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordType *valP) {
-    if ((icode == NOP) || (icode == HALT)){
+    if ((icode == &NOP) || (icode == &HALT)){
         printf("In NOP/HALT fetch");
         *valP = getPC() + 1;
     }
-    //if (())
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
