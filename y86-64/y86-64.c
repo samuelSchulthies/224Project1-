@@ -33,7 +33,7 @@ void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType v
     if ((icode ==  NOP) || (icode == HALT)){    //NOP and HALT
         printf("In NOP/HALT PC");
         setPC(valP);
-        if (icode == 1){
+        if (icode == HALT){
             setStatus(STAT_HLT);
         }
     }
