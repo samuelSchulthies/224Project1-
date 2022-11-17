@@ -15,7 +15,7 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
     *rB = (secondByte & 0x0f);
 
     if ((*icode == NOP) || (*icode == HALT)){
-        printf("In NOP/HALT fetch");
+        //printf("In NOP/HALT fetch");
         *valP = getPC() + 1;
     }
     if (*icode == OPQ){
@@ -57,7 +57,7 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
-    printf("In memoryStage");
+    //printf("In memoryStage");
 }
 
 void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
