@@ -30,15 +30,24 @@ void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
 
 void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType valC, wordType *valE, bool *Cnd) {
     *valE = valB + valA;
+    if (*valE < 0){
+        signFlag = 1;
+    }
+    if (*valE == 0){
+        zeroFlag = 1;
+    }
+    if ((valA < 0 == valB < 0) && (*valE < 0 != valA < 0)){
+        overflowFlag = 1;
+    }
 
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
- 
+    printf("In memoryStage");
 }
 
 void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
-    rB = valE;
+    setRegister(rB, valE);
 }
 
 void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType valM) {
