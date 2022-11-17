@@ -6,18 +6,31 @@
 const int MAX_MEM_SIZE  = (1 << 13);
 
 void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordType *valP) {
-    if ((icode == &NOP) || (icode == &HALT)){
+    wordType temp = getPC();
+    byteType firstByte = getByteFromMemory(temp);
+    *icode = ((firstByte & 0xf0) >> 4);
+    *ifun = (firstByte & 0x0f);
+    byteType secondByte = getByteFromMemory(temp + 1);
+    *rA = ((secondByte & 0xf0) >> 4);
+    *rB = (secondByte & 0x0f);
+
+    if ((*icode == NOP) || (*icode == HALT)){
         printf("In NOP/HALT fetch");
         *valP = getPC() + 1;
+    }
+    if (*icode == OPQ){
+        *valP = getPC() + 2;
     }
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
- 
+    *valA = getRegister(rA);
+    *valB = getRegister(rB);
 }
 
 void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType valC, wordType *valE, bool *Cnd) {
-  
+    *valE = valB + valA;
+
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
@@ -25,16 +38,13 @@ void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordTyp
 }
 
 void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
- 
+    rB = valE;
 }
 
 void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType valM) {
-    if ((icode ==  NOP) || (icode == HALT)){    //NOP and HALT
-        printf("In NOP/HALT PC");
-        setPC(valP);
-        if (icode == HALT){
-            setStatus(STAT_HLT);
-        }
+    setPC(valP);
+    if (icode == HALT){
+        setStatus(STAT_HLT);
     }
 }
 
