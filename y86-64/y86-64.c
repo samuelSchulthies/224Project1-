@@ -36,6 +36,10 @@ void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
 }
 
 void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType valC, wordType *valE, bool *Cnd) {
+    signFlag = 0;
+    zeroFlag = 0;
+    overflowFlag = 0;
+    
     if (icode == OPQ){
         if (ifun == ADD){
             *valE = valB + valA;
