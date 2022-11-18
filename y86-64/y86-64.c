@@ -98,7 +98,7 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
             *valE = (valB + valA);
         }
         if (ifun == SUB){
-            *valE = (valB + (-valA));
+            *valE = (valB - valA);
         }
         if (ifun == AND){
             *valE = (valB & valA);
@@ -107,21 +107,21 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
             *valE = (valB ^ valA);
         }
         //Flag checks for OPQ
-        if (*valE < 0){
+        if (valE < 0){
             signFlag = 1;
         }
         else {
             signFlag = 0;
         }
 
-        if (*valE == 0){
+        if (valE == 0){
             zeroFlag = 1;
         }
         else {
             zeroFlag = 0;
         }
 
-        if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))){
+        if (((valA < 0) == (valB < 0)) && ((valE < 0) != (valA < 0))){
             overflowFlag = 1;
         }
         else {
