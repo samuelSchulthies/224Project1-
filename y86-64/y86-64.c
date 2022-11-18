@@ -120,12 +120,21 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
         else {
             zeroFlag = 0;
         }
-
-        if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))){
-            overflowFlag = 1;
+        if (ifun == ADD) {
+            if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))) {
+                overflowFlag = 1;
+            }
+            else {
+                overflowFlag = 0;
+            }
         }
-        else {
-            overflowFlag = 0;
+        if (ifun == SUB) {
+            if (((valA > 0) == (valB > 0)) && ((*valE > 0) != (valA > 0))) {
+                overflowFlag = 1;
+            }
+            else {
+                overflowFlag = 0;
+            }
         }
     }
 
