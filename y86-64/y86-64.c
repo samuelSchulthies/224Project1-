@@ -95,16 +95,16 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
 
     if (icode == OPQ){
         if (ifun == ADD){
-            *valE = valB + valA;
+            *valE = (valB + valA);
         }
         if (ifun == SUB){
-            *valE = valB - valA;
+            *valE = (valB + (-valA));
         }
         if (ifun == AND){
-            *valE = valB & valA;
+            *valE = (valB & valA);
         }
         if (ifun == XOR){
-            *valE = valB ^ valA;
+            *valE = (valB ^ valA);
         }
         //Flag checks for OPQ
         if (*valE < 0){
@@ -188,12 +188,10 @@ void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordTyp
 }
 
 void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
-    if (icode == OPQ) {
+    if ((icode == OPQ) || (icode == RRMOVQ) || (icode == IRMOVQ)) {
         setRegister(rB, valE);
     }
-    if (icode == IRMOVQ) {
-        setRegister(rB, valE);
-    }
+
     if (icode == MRMOVQ) {
         setRegister(rA, valM);
     }
