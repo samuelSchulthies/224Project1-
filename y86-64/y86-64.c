@@ -46,6 +46,10 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
         *valC = secondWord;
         *valP = getPC() + 9;
     }
+
+    if (*icode == RET){
+        *valP = getPC() + 1;
+    }
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
@@ -78,6 +82,11 @@ void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
     }
 
     if (icode == CALL) {
+        *valB = getRegister(RSP);
+    }
+
+    if (icode == RET) {
+        *valA = getRegister(RSP);
         *valB = getRegister(RSP);
     }
 }
@@ -151,6 +160,10 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
     if (icode == CALL){
         *valE = valB + (-8);
     }
+
+    if (icode == RET){
+        *valE = valB + 8;
+    }
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
@@ -168,6 +181,9 @@ void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordTyp
     }
     if (icode == CALL) {
         setWordInMemory(valE, valP);
+    }
+    if (icode == RET) {
+        *valM = getWordFromMemory(valA);
     }
 }
 
@@ -189,6 +205,9 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
         setRegister(rA, valM);
     }
     if (icode == CALL) {
+        setRegister(RSP, valE);
+    }
+    if (icode == RET) {
         setRegister(RSP, valE);
     }
 }
