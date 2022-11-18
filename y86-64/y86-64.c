@@ -221,11 +221,13 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
 }
 
 void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType valM) {
-    if (icode == CALL){
-        setPC(valC);
-    }
-    if (icode == RET){
-        setPC(valM);
+    if ((icode == CALL) || (icode == RET)){
+        if (icode == CALL) {
+            setPC(valC);
+        }
+        if (icode == RET) {
+            setPC(valM);
+        }
     }
     else {
         setPC(valP);
