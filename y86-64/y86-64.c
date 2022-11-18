@@ -18,10 +18,16 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
         //printf("In NOP/HALT fetch");
         *valP = getPC() + 1;
     }
+
     if (*icode == OPQ){
         *valP = getPC() + 2;
     }
-    if (*icode == IRMOVQ){
+
+    if (*icode == RRMOVQ){
+        *valP = getPC() + 2;
+    }
+
+    if ((*icode == IRMOVQ) || (*icode == RMMOVQ) || (*icode == MRMOVQ)){
         wordType thirdWord = getWordFromMemory(temp + 2);
         *valC = thirdWord;
         *valP = getPC() + 10;
@@ -29,8 +35,21 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
-    if (OPQ == icode) {
+    if (icode == OPQ) {
         *valA = getRegister(rA);
+        *valB = getRegister(rB);
+    }
+
+    if (icode == RRMOVQ) {
+        *valA = getRegister(rA);
+    }
+
+    if (icode == RMMOVQ) {
+        *valA = getRegister(rA);
+        *valB = getRegister(rB);
+    }
+
+    if (icode == MRMOVQ) {
         *valB = getRegister(rB);
     }
 }
@@ -40,6 +59,15 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
     if (icode == OPQ){
         if (ifun == ADD){
             *valE = valB + valA;
+        }
+        if (ifun == SUB){
+            *valE = valB - valA;
+        }
+        if (ifun == AND){
+            *valE = valB & valA;
+        }
+        if (ifun == XOR){
+            *valE = valB ^ valA;
         }
         //Flag checks for OPQ
         if (*valE < 0){
@@ -64,13 +92,30 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
         }
     }
 
+    if (icode == RRMOVQ){
+        *valE = 0 + valA;
+    }
+
     if (icode == IRMOVQ){
         *valE = 0 + valC;
+    }
+
+    if (icode == RMMOVQ){
+        *valE = valB + valC;
+    }
+
+    if (icode == MRMOVQ){
+        *valE = valB + valC;
     }
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
-    //printf("In memoryStage");
+    if (icode == RMMOVQ) {
+        setWordInMemory(valE, valA);
+    }
+    if (icode == MRMOVQ) {
+        *valM = getWordFromMemory(valE);
+    }
 }
 
 void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
@@ -79,6 +124,9 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
     }
     if (icode == IRMOVQ) {
         setRegister(rB, valE);
+    }
+    if (icode == MRMOVQ) {
+        setRegister(rA, valM);
     }
 }
 
