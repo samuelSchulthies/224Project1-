@@ -41,32 +41,32 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
         if (ifun == ADD){
             *valE = valB + valA;
         }
+        //Flag checks for OPQ
+        if (*valE < 0){
+            signFlag = 1;
+        }
+        else {
+            signFlag = 0;
+        }
+
+        if (*valE == 0){
+            zeroFlag = 1;
+        }
+        else {
+            zeroFlag = 0;
+        }
+
+        if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))){
+            overflowFlag = 1;
+        }
+        else {
+            overflowFlag = 0;
+        }
     }
+
     if (icode == IRMOVQ){
         *valE = 0 + valC;
     }
-
-    if (*valE < 0){
-        signFlag = 1;
-    }
-    else {
-        signFlag = 0;
-    }
-
-    if (*valE == 0){
-        zeroFlag = 1;
-    }
-    else {
-        zeroFlag = 0;
-    }
-
-    if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))){
-        overflowFlag = 1;
-    }
-    else {
-        overflowFlag = 0;
-    }
-
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
