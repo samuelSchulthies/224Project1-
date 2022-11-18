@@ -50,6 +50,10 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
     if (*icode == RET){
         *valP = getPC() + 1;
     }
+
+    if (*icode == CMOVXX){
+        *valP = getPC() + 2;
+    }
 }
 
 void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
@@ -88,6 +92,10 @@ void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
     if (icode == RET) {
         *valA = getRegister(RSP);
         *valB = getRegister(RSP);
+    }
+
+    if (icode == CMOVXX) {
+        *valA = getRegister(rA);
     }
 }
 
@@ -174,6 +182,11 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
     if (icode == RET){
         *valE = valB + 8;
     }
+
+    if (icode == CMOVXX){
+        *valE = 0 + valA;
+        *Cnd = Cond(ifun);
+    }
 }
 
 void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordType *valM) {
@@ -197,7 +210,7 @@ void memoryStage(int icode, wordType valA, wordType valP, wordType valE, wordTyp
     }
 }
 
-void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
+void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM, bool Cnd) {
     if ((icode == OPQ) || (icode == RRMOVQ) || (icode == IRMOVQ)) {
         setRegister(rB, valE);
     }
@@ -217,6 +230,11 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
     }
     if (icode == RET) {
         setRegister(RSP, valE);
+    }
+    if (icode == CMOVXX) {
+        if (Cnd){
+            setRegister(RSP, valE);
+        }
     }
 }
 
@@ -271,7 +289,7 @@ void stepMachine(int stepMode) {
   memoryStage(icode, valA, valP, valE, &valM);
   applyStageStepMode(stepMode, "Memory", icode, ifun, rA, rB, valC, valP, valA, valB, valE, Cnd, valM);
   
-  writebackStage(icode, rA, rB, valE, valM);
+  writebackStage(icode, rA, rB, valE, valM, Cnd);
   applyStageStepMode(stepMode, "Writeback", icode, ifun, rA, rB, valC, valP, valA, valB, valE, Cnd, valM);
   
   pcUpdateStage(icode, valC, valP, Cnd, valM);
