@@ -22,7 +22,7 @@ void fetchStage(int *icode, int *ifun, int *rA, int *rB, wordType *valC, wordTyp
         *valP = getPC() + 2;
     }
     if (*icode == IRMOVQ){
-        byteType thirdWord = getWordFromMemory(temp + 2);
+        wordType thirdWord = getWordFromMemory(temp + 2);
         *valC = thirdWord;
         *valP = getPC() + 10;
     }
