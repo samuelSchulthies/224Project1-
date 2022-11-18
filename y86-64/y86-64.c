@@ -36,10 +36,7 @@ void decodeStage(int icode, int rA, int rB, wordType *valA, wordType *valB) {
 }
 
 void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType valC, wordType *valE, bool *Cnd) {
-    signFlag = 0;
-    zeroFlag = 0;
-    overflowFlag = 0;
-    
+
     if (icode == OPQ){
         if (ifun == ADD){
             *valE = valB + valA;
@@ -48,14 +45,26 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
     if (icode == IRMOVQ){
         *valE = 0 + valC;
     }
+
     if (*valE < 0){
         signFlag = 1;
     }
+    else {
+        signFlag = 0;
+    }
+
     if (*valE == 0){
         zeroFlag = 1;
     }
+    else {
+        zeroFlag = 0;
+    }
+
     if (((valA < 0) == (valB < 0)) && ((*valE < 0) != (valA < 0))){
         overflowFlag = 1;
+    }
+    else {
+        overflowFlag = 0;
     }
 
 }
