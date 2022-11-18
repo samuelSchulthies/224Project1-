@@ -232,9 +232,7 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM, boo
         setRegister(RSP, valE);
     }
     if (icode == CMOVXX) {
-        if (Cnd) {
-            setRegister(rB, valE);
-        }
+        Cnd?setRegister(rB, valE);
     }
 }
 
