@@ -145,7 +145,7 @@ void executeStage(int icode, int ifun, wordType valA, wordType valB, wordType va
     }
 
     if (icode == JXX){
-        *Cnd = Cond(*ifun);
+        *Cnd = Cond(ifun);
     }
 
     if (icode == CALL){
@@ -194,14 +194,12 @@ void writebackStage(int icode, int rA, int rB, wordType valE, wordType valM) {
 }
 
 void pcUpdateStage(int icode, wordType valC, wordType valP, bool Cnd, wordType valM) {
-    if (*icode == CALL){
+    if (icode == CALL){
         setPC(valC);
     }
-
-    if (*icode == RET){
+    if (icode == RET){
         setPC(valM);
     }
-
     else {
         setPC(valP);
     }
